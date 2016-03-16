@@ -11,7 +11,7 @@ app.SearchView = Backbone.View.extend({
   },
 
   initialize: function() {
-      this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'change', this.render);
   },
 
   render: function() {
@@ -20,9 +20,15 @@ app.SearchView = Backbone.View.extend({
    },
 
    addItem: function() {
-     app.SumTable.totalCalories += this.model.attributes.fields.nf_calories; 
-     app.SumTable.add( new app.AddedItem({name: this.model.attributes.fields.item_name, calories: this.model.attributes.fields.nf_calories}));
 
-   } // @TODO use create for local storage
+     app.SumTable.add( new app.AddedItem({
+       name: this.model.attributes.fields.item_name,
+       calories: this.model.attributes.fields.nf_calories,
+       date: $.datepicker.formatDate("yy-mm-dd", $( "#datepicker" ).datepicker( "getDate" ) )
+     }));
+   }
+ });
 
-})
+
+
+app.SearchResults = new SearchResultsList();

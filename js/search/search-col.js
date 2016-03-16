@@ -18,5 +18,3 @@ var SearchResultsList = Backbone.Collection.extend({
   comparator: 'name'
 
 });
-
-app.SearchResults = new SearchResultsList();

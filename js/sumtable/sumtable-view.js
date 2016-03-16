@@ -21,7 +21,6 @@ app.AddedView = Backbone.View.extend({
   },
 
   removeItem: function() {
-    app.SumTable.totalCalories -= this.model.attributes.calories;
     this.model.destroy();
   }
 
