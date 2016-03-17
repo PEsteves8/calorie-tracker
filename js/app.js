@@ -1,5 +1,7 @@
 var app = app || {};
 
+//_.extend(app, Backbone.Events);
+
 app.AppView = Backbone.View.extend({
 
   el: ".calorie-app",
@@ -13,13 +15,38 @@ app.AppView = Backbone.View.extend({
 
   initialize: function() {
 
-    $('#datepicker').datepicker({onSelect: function(dateStr) {
-      console.log($(this).datepicker('getDate'));
+   app.GlobalEvents = _.extend({}, Backbone.Events);
+
+  $('#datepicker').datepicker({onSelect: function(dateStr) {
+      app.GlobalEvents.trigger('dateChange');
     }});
 
+    this.listenTo(app.GlobalEvents, 'dateChange', this.renderDayTable);
+
+
     this.listenTo(app.SumTable, 'add', this.addToTable);
-    this.listenTo(app.SumTable, 'add', this.renderTotal);
-    this.listenTo(app.SumTable, 'remove', this.renderTotal);
+
+    this.listenTo(app.SumTable, 'add', this.renderTotalCal);
+    this.listenTo(app.SumTable, 'remove', this.renderTotalCal);
+
+  },
+
+  renderDayTable: function() {
+    app.GlobalEvents.trigger('removePrevViews');
+
+    var addedView;
+    var filteredByDate = app.SumTable.filterByDate();
+    $(".added-items-list").html("");
+
+  _.each(filteredByDate, function(model){
+      addedView = new app.AddedView({
+        model: model
+      });
+      $(".added-items-list").append(addedView.render().el);
+    });
+
+    this.renderTotalCal();
+
   },
 
   searchOnEnter: function( e ) {
@@ -33,6 +60,7 @@ app.AppView = Backbone.View.extend({
     app.SearchResults.fetch({
       success: function(response, xhr) {
         this.renderSearch();
+        console.log(response);
       }.bind(this),
       error: function(errorResponse) {
         console.log(errorResponse)
@@ -40,11 +68,13 @@ app.AppView = Backbone.View.extend({
     });
   },
 
-  renderTotal: function() {
+  renderTotalCal: function() {
   var totalCalories = 0;
-  app.SumTable.each(function(model) {
-    totalCalories += model.get('calories');
 
+  var filteredByDate = app.SumTable.filterByDate();
+
+  _.each(filteredByDate, function(model) {
+    totalCalories += model.get('calories');
   });
   $(".total-calories").html(totalCalories);
   },
@@ -69,8 +99,6 @@ app.AppView = Backbone.View.extend({
   },
 
   addToTable: function() {
-  //  console.log(app.SumTable.totalCalories);
-    //console.log(app.SumTable.date);
     var addedView;
     var n = _.findLastIndex(app.SumTable.models);
     addedView = new app.AddedView({

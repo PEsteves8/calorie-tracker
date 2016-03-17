@@ -10,9 +10,9 @@ app.SearchView = Backbone.View.extend({
     "click" : 'addItem'
   },
 
-  initialize: function() {
-    this.listenTo(this.model, 'change', this.render);
-  },
+//  initialize: function() {
+  //  this.listenTo(this.model, 'change', this.render);
+  //},
 
   render: function() {
      this.$el.html( this.template( { name: this.model.attributes.fields.item_name, calories: this.model.attributes.fields.nf_calories }  ) );

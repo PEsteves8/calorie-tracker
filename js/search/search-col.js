@@ -15,6 +15,9 @@ var SearchResultsList = Backbone.Collection.extend({
     return response.hits;
   },
 
-  comparator: 'name'
+  comparator: function (models) {
+   return models.attributes.fields.item_name
+ },
+
 
 });
