@@ -13,6 +13,7 @@ app.AddedView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(app.GlobalEvents, 'removePrevViews', this.remove);
     this.listenTo(this.model, 'destroy', this.remove);
+    
   },
 
   render: function() {

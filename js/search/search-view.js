@@ -10,9 +10,6 @@ app.SearchView = Backbone.View.extend({
     "click" : 'addItem'
   },
 
-//  initialize: function() {
-  //  this.listenTo(this.model, 'change', this.render);
-  //},
 
   render: function() {
      this.$el.html( this.template( { name: this.model.attributes.fields.item_name, calories: this.model.attributes.fields.nf_calories }  ) );
@@ -21,7 +18,7 @@ app.SearchView = Backbone.View.extend({
 
    addItem: function() {
 
-     app.SumTable.add( new app.AddedItem({
+     app.SumTable.create( new app.AddedItem({
        name: this.model.attributes.fields.item_name,
        calories: this.model.attributes.fields.nf_calories,
        date: $.datepicker.formatDate("yy-mm-dd", $( "#datepicker" ).datepicker( "getDate" ) )
