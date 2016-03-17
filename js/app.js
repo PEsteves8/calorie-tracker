@@ -18,27 +18,11 @@ app.AppView = Backbone.View.extend({
 
   initialize: function() {
 
-    app.GlobalEvents = _.extend({}, Backbone.Events);
-
-    this.listenTo(app.GlobalEvents, 'dateChange', this.renderDayTable);
-
-    this.listenTo(app.SearchResults, 'add', this.renderSearch);
-
-    this.listenTo(app.SumTable, 'sync', this.renderDayTable);
-    this.listenTo(app.SumTable, 'add', this.addToTable);
-
-    this.listenTo(app.SumTable, 'add remove', this.renderTotalCal);
-    this.listenTo(app.SumTable, 'add remove', this.refreshDatePicker);
-
-    app.SumTable.fetch({
-      silent: true
-    }); /*Silent true so that it doesn't fire add events. That is bound to addToTable which doesn't filter by date. Since sync events always get triggered the actual filtered rendering of current items is triggerd by 'sync' */
-//@TODO Fix first render not showing unless date change
     $('#datepicker').datepicker({
       onSelect: function(dateStr) {
         app.GlobalEvents.trigger('dateChange');
       },
-      beforeShowDay: function(date) {
+   beforeShowDay: function(date) {
 
         var dates = [];
         app.SumTable.each(function(model) {
@@ -65,6 +49,24 @@ app.AppView = Backbone.View.extend({
       }
 
     });
+
+    app.GlobalEvents = _.extend({}, Backbone.Events);
+
+    this.listenTo(app.GlobalEvents, 'dateChange', this.renderDayTable);
+
+    this.listenTo(app.SearchResults, 'sync', this.renderSearch);
+
+    this.listenTo(app.SumTable, 'sync', this.renderDayTable);
+    this.listenTo(app.SumTable, 'sync', this.refreshDatePicker);
+
+    this.listenTo(app.SumTable, 'add', this.addToTable);
+    this.listenTo(app.SumTable, 'add remove', this.renderTotalCal);
+    this.listenTo(app.SumTable, 'add remove', this.refreshDatePicker);
+
+
+    app.SumTable.fetch({
+      silent: true
+    }); /*Silent true so that it doesn't fire add events. That is bound to addToTable which doesn't filter by date. Since sync events always get triggered the actual filtered rendering of current items is triggerd by 'sync' */
 
   },
 

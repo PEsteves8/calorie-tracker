@@ -1,11 +1,11 @@
 var app = app || {};
 
 
-var SumTableList = Backbone.Collection.extend({
+var SumTableList = Backbone.Firebase.Collection.extend({
 
   model: app.AddedItem,
 
-  localStorage: new Backbone.LocalStorage('calorie-tracker'),
+  url: "https://shining-fire-9576.firebaseIO.com",
 
   filterByDate: function() {
      return this.filter(function( model ) {

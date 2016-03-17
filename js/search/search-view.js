@@ -18,11 +18,11 @@ app.SearchView = Backbone.View.extend({
 
    addItem: function() {
 
-     app.SumTable.create( new app.AddedItem({
+     app.SumTable.create({
        name: this.model.attributes.fields.item_name,
        calories: this.model.attributes.fields.nf_calories,
        date: $.datepicker.formatDate("yy-mm-dd", $( "#datepicker" ).datepicker( "getDate" ) )
-     }));
+     });
    }
  });
 
