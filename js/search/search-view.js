@@ -12,7 +12,7 @@ app.SearchView = Backbone.View.extend({
 
 
   render: function() {
-     this.$el.html( this.template( { name: this.model.attributes.fields.item_name, calories: this.model.attributes.fields.nf_calories }  ) );
+     this.$el.html( this.template( { name: this.model.attributes.fields.item_name, calories: this.model.attributes.fields.nf_calories, brand: this.model.attributes.fields.brand_name }  ) );
      return this;
    },
 
@@ -20,6 +20,7 @@ app.SearchView = Backbone.View.extend({
 
      app.SumTable.create({
        name: this.model.attributes.fields.item_name,
+       brand: this.model.attributes.fields.brand_name,
        calories: this.model.attributes.fields.nf_calories,
        date: $.datepicker.formatDate("yy-mm-dd", $( "#datepicker" ).datepicker( "getDate" ) )
      });

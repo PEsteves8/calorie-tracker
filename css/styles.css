@@ -1,22 +1,170 @@
 body, html {
-  width: 100%;
+  max-width: 960px;
+  background-color: lightgrey;
+  text-align: center;
+  font-family: sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
 }
 
 .hidden {
   display: none;
 }
 
-.Highlighted {
-  
+@media screen and (min-width: 550px) {
+  .li-left {
+    position: absolute;
+    left: 10px;
+  }
 
-   background-color : Green !important;
+  .li-right {
+  position: absolute;
+  right: 10px;
+  }
 
-   background-image :none !important;
-
-   color: White !important;
-
-   font-weight:bold !important;
-
-   font-size: 12pt;
 
 }
+@media screen and (max-width: 550px) {
+#datepicker {
+  margin-left: -10px;
+}
+}
+
+.main-box {
+  width: 100%;
+  -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
+  -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
+  box-shadow: 0px 0px 0px 2px #9fb4f2;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+  background: -moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background: -webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background: -o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background: -ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+  background: linear-gradient(to bottom, #93a4c3 5%, #71869f 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e', GradientType=0);
+  background-color: #7892c2;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+
+  display: inline-block;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 19px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #283966;
+  padding-bottom: 15px;
+  padding-top: 0px;
+}
+
+
+.app-name {
+  margin-bottom: 5px;
+}
+
+.app-name-ultimate {
+  margin: 0px;
+}
+
+
+.app-name-platinum {
+  color: gold;
+  margin: 0px;
+}
+
+.instructions {
+  padding: 2px;
+  list-style-type: none;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+.instructions li{
+display: inline;
+
+}
+
+.instructions li:not(:last-child) {
+  padding-right: 2%;
+}
+
+.Highlighted {
+  background-color: Green !important;
+  background-image: none !important;
+  color: White !important;
+  font-weight: bold !important;
+  font-size: 12pt;
+}
+
+#datepicker {
+  margin-top: 20px;
+  font-size: 0.85em;
+}
+
+.adding-section {
+  width: 100%;
+  min-height: 25%;
+  text-align: justify;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
+.added-items-list{
+  padding: 0px;
+  list-style-type: none;
+  position: relative;
+
+}
+
+.added-items-list li {
+  border-radius: 15px;
+  background: white;
+  padding: 10px;
+  margin-bottom: 2px;
+  min-height: 3em;
+}
+
+.day-items {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.remove-button {
+  -webkit-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+  background: none;
+  border: 0;
+	top: 0;
+	right: 10px;
+	bottom: 0;
+	width: 40px;
+	height: 40px;
+	margin: auto 0;
+	font-size: 22px;
+	color: #a88a8a;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+  padding-left: 10px;
+}
+
+.remove-button:after {
+	content: '✖';
+}
+
+.remove-button:hover
+ {
+	text-shadow: 0 0 1px #000,
+				 0 0 10px rgba(199, 107, 107, 0.8);
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+.remove-button:focus {outline:0;}

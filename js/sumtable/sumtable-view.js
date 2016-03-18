@@ -13,11 +13,11 @@ app.AddedView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(app.GlobalEvents, 'removePrevViews', this.remove);
     this.listenTo(this.model, 'destroy', this.remove);
-    
+
   },
 
   render: function() {
-    this.$el.html( this.template( { name: this.model.attributes.name, calories: this.model.attributes.calories }  ) );
+    this.$el.html( this.template( { name: this.model.attributes.name, calories: this.model.attributes.calories, brand: this.model.attributes.brand }  ) );
     return this;
   },
 

@@ -4,9 +4,7 @@ var app = app || {};
 
 app.AppView = Backbone.View.extend({
 
-  el: ".calorie-app",
-
-  sumTemplate: _.template($('.sum-template').html()),
+  el: ".app-main",
 
   events: {
     "click .submit-button": "doSearch",
@@ -105,7 +103,7 @@ app.AppView = Backbone.View.extend({
         console.log(response);
       }.bind(this),
       error: function(errorResponse) {
-        console.log(errorResponse)
+        console.log("Unable to fetch data");
       }
     });
   },
@@ -118,7 +116,7 @@ app.AppView = Backbone.View.extend({
     _.each(filteredByDate, function(model) {
       totalCalories += model.get('calories');
     });
-    $(".total-calories").html(totalCalories);
+    $(".total-calories").html(totalCalories.toFixed(2));
   },
 
   renderSearch: function() {
