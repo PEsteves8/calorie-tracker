@@ -8,7 +8,8 @@ app.AppView = Backbone.View.extend({
 
   events: {
     "click .submit-button": "doSearch",
-    "keypress .search-input": "searchOnEnter"
+    "keypress .search-input": "searchOnEnter",
+    "click .clear-button" : "clearSearch"
   },
 
 
@@ -16,7 +17,7 @@ app.AppView = Backbone.View.extend({
 
   initialize: function() {
 
-    $('#datepicker').datepicker({
+    $('.datepicker').datepicker({
       onSelect: function(dateStr) {
         app.GlobalEvents.trigger('dateChange');
       },
@@ -40,7 +41,7 @@ app.AppView = Backbone.View.extend({
         var shortDate = yyyy + '-' + mm + '-' + dd;
 
         if (shortDate == dates[shortDate]) {
-          return [true, "Highlighted", ""];
+          return [true, "highlighted", ""];
         } else {
           return [true, '', ''];
         }
@@ -68,8 +69,13 @@ app.AppView = Backbone.View.extend({
 
   },
 
+  clearSearch: function(e) {
+    e.preventDefault();
+    $(".search-results").html('');
+  },
+
   refreshDatePicker: function() {
-    $("#datepicker").datepicker("refresh");
+    $(".datepicker").datepicker("refresh");
   },
 
   renderDayTable: function() {
@@ -92,6 +98,7 @@ app.AppView = Backbone.View.extend({
 
   searchOnEnter: function(e) {
     if (e.which === 13) {
+      e.preventDefault();
       this.doSearch();
     }
   },
@@ -100,7 +107,6 @@ app.AppView = Backbone.View.extend({
     app.SearchResults.foodName = $(".search-input").val().trim();
     app.SearchResults.fetch({
       success: function(response, xhr) {
-        console.log(response);
       }.bind(this),
       error: function(errorResponse) {
         console.log("Unable to fetch data");
@@ -146,12 +152,13 @@ app.AppView = Backbone.View.extend({
       model: app.SumTable.models[n]
     });
     $(".added-items-list").append(addedView.render().el);
-    console.log(addedView);
+
   }
 
 });
 
 
 $(function() {
+  
   new app.AppView();
 });

@@ -9,7 +9,7 @@ var SumTableList = Backbone.Firebase.Collection.extend({
 
   filterByDate: function() {
      return this.filter(function( model ) {
-       return model.get('date') == $.datepicker.formatDate("yy-mm-dd", $( "#datepicker" ).datepicker( "getDate" ) );
+       return model.get('date') == $.datepicker.formatDate("yy-mm-dd", $( ".datepicker" ).datepicker( "getDate" ) );
      })
    }
 

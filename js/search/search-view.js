@@ -22,7 +22,7 @@ app.SearchView = Backbone.View.extend({
        name: this.model.attributes.fields.item_name,
        brand: this.model.attributes.fields.brand_name,
        calories: this.model.attributes.fields.nf_calories,
-       date: $.datepicker.formatDate("yy-mm-dd", $( "#datepicker" ).datepicker( "getDate" ) )
+       date: $.datepicker.formatDate("yy-mm-dd", $( ".datepicker" ).datepicker( "getDate" ) )
      });
    }
  });

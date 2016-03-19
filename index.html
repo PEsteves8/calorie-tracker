@@ -27,17 +27,25 @@
 
 
     <ul class="main-box instructions">
-      <li>1. Search foods from Nutritionix API </li>
+      <li>1. Search foods from Nutritionix DB </li>
       <li>2. Add them to the daily list </li>
       <li>3. Monitor your daily calorie intake </li>
     </ul>
   </header>
 
   <div class="app-main">
+    <div class="main-box search-section">
+      <form>
+      <input type="search" placeholder="Search foods items..." class="search-input">
+      <input type="button" value="Search" class="submit-button"></input>
+      <button class="clear-button">Clear</button>
+    </form>
+      <ul class="search-results"></ul>
+    </div>
 
-    <div class="grid grid-pad main-box day-items">
+    <div class="grid grid-pad main-box day-section">
       <div class="col-4-12">
-        <div id="datepicker"></div>
+        <div class="datepicker"></div>
       </div>
 
       <div class="col-8-12">
@@ -45,36 +53,26 @@
           <ol class="added-items-list"></ol>
         </div>
         <div class="total-cal-section">
-          <h1>Total Calories: <span class="total-calories">0</span></h1>
+          <h1>Day's Total Calories: <span class="total-calories">0</span></h1>
         </div>
-
-
 
 
       </div>
 
     </div>
 
-    <div class="search-section main-box">
-      <input type="search" placeholder="Search for foods..." class="search-input">
-      <button class="submit-button">Search</button>
-      <ul class="search-results"></ul>
-    </div>
-
-
   </div>
-
 
   </div>
 
   <script type="text/template" class="search-item-template">
-    <span>Name: <%= name %> </span> -------- <span><%= brand %></span><span>Calories: <%= calories %></span>
+    <span><%= brand %> ---- <%= name %> </span> ---- <span><%= calories %> Cal</span>
   </script>
 
   <script type="text/template" class="added-item-template">
-    
-    <div class="li-left"><%= brand %><br><%= name %></div>
-    <div class="li-right"><%= calories %> cal<button class="remove-button"></button></div>
+
+    <div class="li-left"><p><%= name %></p><p><%= brand %></p></div>
+    <div class="li-right cal-number"><%= calories %> cal</div><div class="li-right"><button class="remove-button"></button></div>
 
 
   </script>
