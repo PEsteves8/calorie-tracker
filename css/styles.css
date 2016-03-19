@@ -17,7 +17,7 @@ body, html {
 .li-left p{
   padding: 0;
   margin: 0;
-
+  margin-bottom: 5px;
 }
 
   .li-left {
@@ -31,11 +31,12 @@ body, html {
   right: 10px;
 
 
+
   }
 
   .cal-number {
     margin-right: 50px;
-    margin-top: 20px;
+    margin-top: 25px;
   }
 
 @media screen and (max-width: 550px) {
@@ -221,13 +222,17 @@ height: 30px;
 }
 
 .added-items-list li {
+  color: #000000;
   font-size: 0.9em;
   border-radius: 15px;
   background: #d7ebf9;
   padding: 10px;
+  padding-top: 7px;
+
   margin-bottom: 2px;
   text-indent: 20px ;
-  min-height: 3em;
+  min-height: 3.3em;
+
 }
 
 
