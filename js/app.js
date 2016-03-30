@@ -9,19 +9,23 @@ app.AppView = Backbone.View.extend({
   events: {
     "click .submit-button": "doSearch",
     "keypress .search-input": "searchOnEnter",
-    "click .clear-button" : "clearSearch"
+    "click .clear-button": "clearSearch"
   },
 
-
-
-
   initialize: function() {
+    this.$itemAddedTag = this.$(".item-added-tag");
+    this.$datePicker = this.$(".datepicker");
+    this.$searchResults = this.$(".search-results");
+    this.$addedItemsList = this.$(".added-items-list");
+    this.$searchInput = this.$(".search-input");
+    this.$totalCalories = this.$(".total-calories");
+    this.timer;
 
-    $('.datepicker').datepicker({
+    this.$datePicker.datepicker({
       onSelect: function(dateStr) {
         app.GlobalEvents.trigger('dateChange');
       },
-   beforeShowDay: function(date) {
+      beforeShowDay: function(date) {
 
         var dates = [];
         app.SumTable.each(function(model) {
@@ -57,11 +61,11 @@ app.AppView = Backbone.View.extend({
 
     this.listenTo(app.SumTable, 'sync', this.renderDayTable);
     this.listenTo(app.SumTable, 'sync', this.refreshDatePicker);
+    this.listenToOnce(app.SumTable, 'sync', this.addListenerToShowTag);
 
     this.listenTo(app.SumTable, 'add', this.addToTable);
     this.listenTo(app.SumTable, 'add remove', this.renderTotalCal);
     this.listenTo(app.SumTable, 'add remove', this.refreshDatePicker);
-
 
     app.SumTable.fetch({
       silent: true
@@ -69,13 +73,26 @@ app.AppView = Backbone.View.extend({
 
   },
 
+  addListenerToShowTag: function() {
+    this.listenTo(app.SumTable, 'add', this.showItemAddedTag);
+  },
+
+  showItemAddedTag: function() {
+    if (this.$itemAddedTag.css('display') !== 'none') {
+      window.clearTimeout(this.timer);
+    }
+    this.$itemAddedTag.hide();
+    this.$itemAddedTag.fadeIn(100);
+    this.timer = setTimeout(function() {this.$itemAddedTag.fadeOut(800)}.bind(this), 1000);
+  },
+
   clearSearch: function(e) {
     e.preventDefault();
-    $(".search-results").html('');
+    this.$searchResults.html('');
   },
 
   refreshDatePicker: function() {
-    $(".datepicker").datepicker("refresh");
+    this.$datePicker.datepicker("refresh");
   },
 
   renderDayTable: function() {
@@ -83,17 +100,16 @@ app.AppView = Backbone.View.extend({
 
     var addedView;
     var filteredByDate = app.SumTable.filterByDate();
-    $(".added-items-list").html("");
+    this.$addedItemsList.html("");
 
     _.each(filteredByDate, function(model) {
       addedView = new app.AddedView({
         model: model
       });
-      $(".added-items-list").append(addedView.render().el);
-    });
+      this.$addedItemsList.append(addedView.render().el);
+    }.bind(this));
 
     this.renderTotalCal();
-
   },
 
   searchOnEnter: function(e) {
@@ -104,10 +120,9 @@ app.AppView = Backbone.View.extend({
   },
 
   doSearch: function() {
-    app.SearchResults.foodName = $(".search-input").val().trim();
+    app.SearchResults.foodName = this.$searchInput.val().trim();
     app.SearchResults.fetch({
-      success: function(response, xhr) {
-      }.bind(this),
+      success: function(response, xhr) {}.bind(this),
       error: function(errorResponse) {
         console.log("Unable to fetch data");
       }
@@ -122,26 +137,27 @@ app.AppView = Backbone.View.extend({
     _.each(filteredByDate, function(model) {
       totalCalories += model.get('calories');
     });
-    $(".total-calories").html(totalCalories.toFixed(2));
+    this.$totalCalories.html(totalCalories.toFixed(2));
   },
 
   renderSearch: function() {
 
     var searchView;
-    $(".search-results").html('');
+    this.$searchResults.html('');
 
     if (app.SearchResults.length < 1) {
-      $(".search-results").append("No results found");
+
+      this.$searchResults.append("No results found");
       return;
     }
+
 
     app.SearchResults.each(function(model) {
       searchView = new app.SearchView({
         model: model
       });
-
-      $(".search-results").append(searchView.render().el);
-    });
+      this.$searchResults.append(searchView.render().el);
+    }.bind(this));
 
   },
 
@@ -151,7 +167,7 @@ app.AppView = Backbone.View.extend({
     addedView = new app.AddedView({
       model: app.SumTable.models[n]
     });
-    $(".added-items-list").append(addedView.render().el);
+    this.$addedItemsList.append(addedView.render().el);
 
   }
 
@@ -159,6 +175,6 @@ app.AppView = Backbone.View.extend({
 
 
 $(function() {
-  
+
   new app.AppView();
 });

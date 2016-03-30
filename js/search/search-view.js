@@ -7,7 +7,7 @@ app.SearchView = Backbone.View.extend({
   template:  _.template( $('.search-item-template').html() ),
 
   events: {
-    "click" : 'addItem'
+    "click" : "addItem"
   },
 
 
