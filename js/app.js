@@ -149,7 +149,6 @@ app.AppView = Backbone.View.extend({
       return;
     }
     app.SearchResults.each(function(model) {
-      console.log(model);
       searchView = new app.SearchView({
         model: model
       });
