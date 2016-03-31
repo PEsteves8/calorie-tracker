@@ -3,108 +3,67 @@ body, html {
   background-color: lightgrey;
   text-align: center;
   font-family: sans-serif;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px auto;
 }
 .hidden {
   display: none;
 }
-
 .datepicker {
-  margin: 0 auto;
-  font-size: 0.85em;
+  font-size: 0.77em;
   display: inline-block;
+  margin: 0 auto;
 }
-
 .main-box {
   width: 100%;
   -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
   -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
   box-shadow: 0px 0px 3px 3px #e3e3e3;
-  background: linear-gradient(to bottom, #93a4c3 5%, #7b93b0 100%);
-  background-color: #7892c2;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+  background: #7892c2;
+  background: linear-gradient(to bottom, #8199c4 5%, #7b93b0 100%);
   border-radius: 2px;
   display: inline-block;
   color: #ffffff;
-  font-family: Arial;
-  font-size: 19px;
-  padding-bottom: 15px;
-  padding-top: 0px;
+  padding: 15px;
+  margin: 5px 0;
 }
 .app-name {
-  margin-bottom: 5px;
-  text-shadow: 0px 0px 2px #000;
-
+  margin: 0 0 10px;
+  font-size: 2.5em;
 }
-.app-name-ultimate {
-  margin: 0px;
-  text-shadow: 0px 0px 2px #000;
-
+.app-name-ultimate, .app-name-platinum, .search-section form, .cal-number, .total-cal-title {
+  margin: 0;
+  padding: 0;
 }
 .app-name-platinum {
-  color: gold;
-  margin: 0px;
-
+  color: #ffe600;
 }
 .instructions {
   padding: 10px;
   list-style-type: none;
-  margin-bottom: 0px;
-  margin-top: 10px;
   text-shadow: 0px 0px 2px #000;
 }
-.instructions li {
-  display: inline;
-}
 .instructions li:not(:last-child) {
-  padding-right: 2%;
+  padding-right: 15px;
 }
 
 /* Classes for the date picker */
 
-.highlighted a{
+.highlighted a {
   background-image: none !important;
   background: linear-gradient(#a6e381, #a6df85, #a6e381) !important;
 }
-
 .ui-state-active {
- border: 1px solid darkblue !important;
+  border: 1px solid darkblue !important;
 }
 
+/* Search section */
 
-.search-section {
-  margin-top: 10px;
-  padding: 0;
-}
-form {
-  font-size: 0px;
-  position: relative;
-  margin-bottom: -10px;
-  margin-top: 2px;
-}
+.search-section {}
 .search-input {
-  margin-top: 2px;
   width: 50%;
   height: 30px;
 }
-.submit-button {
-  border-radius: 2px;
-  width: 60px;
-  color: white;
-  height: 30px;
-  background: #6476b5;
-  border: 0px;
-  margin-left: 5px;
-
-}
-.submit-button:hover {
-  background: #7f96e7;
-}
-.clear-button {
+.button-main {
   border-radius: 2px;
   width: 60px;
   color: white;
@@ -113,15 +72,17 @@ form {
   border: 0px;
   margin-left: 5px;
 }
-.clear-button:hover {
+.button-main:hover {
   background: #7f96e7;
+}
+.button-main:active {
+  background: #acbaeb;
 }
 .search-results {
   font-size: 0.8em;
   width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0px;
+  margin: 5px auto;
+  padding: 0;
   list-style-type: none;
   position: relative;
 }
@@ -140,13 +101,17 @@ form {
 .search-results li:hover {
   background: #bee0f7;
 }
+.search-results li:active {
+  background: #4393c6;
+}
+
+/* Added Items List Sections */
+
 .adding-section {
-  width: 100%;
-  min-height: 24%;
+  min-height: 50%;
   text-align: justify;
   color: black;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 .added-items-list {
   padding: 0px;
@@ -159,34 +124,17 @@ form {
   font-size: 0.9em;
   border-radius: 3px;
   background: linear-gradient(to bottom, #f1efef 5%, #ffffff 100%);
-  -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   margin-bottom: 2px;
-  padding: 7px 50px 5px 0;
-  padding-left: 20px;
+  padding: 7px 50px 7px 20px;
 }
-
 .item-description {
-  padding: 0;
   margin: 0 0 7px;
-  text-align: left;
 }
 
-.cal-number {
-  padding: 0;
-  margin: 0;
-}
-.day-section {
-  margin-top: 10px;
-  margin-bottom: 2px;
-  padding-bottom: 10px;
-}
+/* Remove item button */
+
 .remove-button {
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
   background: none;
   border: 0;
   width: 40px;
@@ -196,14 +144,10 @@ form {
   color: #a88a8a;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
-  display: inline;
   position: absolute;
   top: 10px;
   right: 10px;
 }
-
-
-
 .remove-button:after {
   content: '✖';
 }
@@ -215,6 +159,8 @@ form {
 .remove-button:focus {
   outline: 0;
 }
+
+/* Popup tag that shows up indicating that an item was added to the list */
 
 .item-added-tag {
   color: white;
@@ -231,6 +177,8 @@ form {
   font-size: 0.8em;
 }
 
+/* Box showing total day calories */
+
 .total-cal-section {
   -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
@@ -238,31 +186,21 @@ form {
   background: linear-gradient(to bottom, #f1efef 5%, #ffffff 100%);
   border-radius: 5px;
   color: black;
-  margin: 20px auto 20px;
+  margin: 20px auto;
   padding: 10px 0;
 }
-
 .total-calories, .total-cal-title {
-color: #316f34;
+  color: #316f34;
 }
-
 .total-calories {
   padding: 0;
   margin: 10px 0 0;
 }
-
-.total-cal-title {
-  padding: 0;
-  margin: 0;
-}
-
-@media screen and (max-width: 550px) {
+@media screen and (min-width: 550px) {
   .datepicker {
-    font-size: 0.77em;
-    display: inline-block;
-    margin: 0 auto;
+    font-size: 0.85em;
   }
-  .added-items-list li {
-
+  .instructions li {
+    display: inline;
   }
 }

@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Calorie Tracker</title>
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="css/jquery-ui.structure.css">
   <link rel="stylesheet" href="css/jquery-ui.theme.css">
   <link rel="stylesheet" href="css/simplegrid.css">
+  <link rel="stylesheet" href="css/load-icon.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -18,11 +20,10 @@
 
   <header>
 
-
     <div class="main-box">
       <h1 class="app-name">DAILY CALORIE TRACKER</h1>
-      <h4 class="app-name-ultimate">ULTIMATE PREMIUM PRO 9000</h4>
-      <h4 class="app-name-platinum">PLATINUM EDITION</h4>
+      <h3 class="app-name-ultimate">ULTIMATE PREMIUM PRO 9000</h3>
+      <h3 class="app-name-platinum">PLATINUM EDITION</h3>
     </div>
 
 
@@ -36,10 +37,10 @@
   <div class="app-main">
     <div class="main-box search-section">
       <form>
-      <input type="search" placeholder="Search foods items..." class="search-input">
-      <input type="button" value="Search" class="submit-button"></input>
-      <button class="clear-button">Clear</button>
-    </form>
+        <input type="search" placeholder="Search foods items..." class="search-input">
+        <input type="button" value="Search" class="submit-button button-main">
+        <button class="clear-button button-main">Clear</button>
+      </form>
       <ul class="search-results"></ul>
     </div>
 
@@ -47,7 +48,8 @@
 
       <div class="col-4-12">
         <div class="total-cal-section">
-          <h3 class="total-cal-title">Day's Total Calories: <p class="total-calories">0</p></h3>
+          <h3 class="total-cal-title">Day's Total Calories:</h3>
+          <h3 class="total-calories"><span class="load-icon">Loading<span>.</span><span>.</span><span>.</span></span><div></h3>
         </div>
         <div class="datepicker"></div>
       </div>
@@ -61,7 +63,7 @@
 
     </div>
 
-     <div class="item-added-tag hidden"><span>Item Added</span></div>
+    <div class="item-added-tag hidden"><span>Item Added</span></div>
   </div>
 
 
@@ -72,16 +74,21 @@
   <script type="text/template" class="added-item-template">
 
     <div class="">
-    <p class="item-description"><%= brand %> - <%= name %> <%= grams ? "- " + grams + "g" : "" %></p>
-    <p class="cal-number"><%= calories %> cal</p>
-    <button class="remove-button"></button>
+      <p class="item-description">
+        <%= brand %> -
+          <%= name %>
+            <%= grams ? "- " + grams + "g" : "" %>
+      </p>
+      <p class="cal-number">
+        <%= calories %> cal</p>
+      <button class="remove-button"></button>
     </div>
 
 
   </script>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components\jqueryUI\jquery-ui.min.js"></script>
+  <script src="bower_components/jqueryUI/jquery-ui.min.js"></script>
   <script src="bower_components/underscore/underscore-min.js"></script>
   <script src="bower_components/backbone/backbone-min.js"></script>
 

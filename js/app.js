@@ -83,7 +83,9 @@ app.AppView = Backbone.View.extend({
     }
     this.$itemAddedTag.hide();
     this.$itemAddedTag.fadeIn(100);
-    this.timer = setTimeout(function() {this.$itemAddedTag.fadeOut(800)}.bind(this), 1000);
+    this.timer = setTimeout(function() {
+      this.$itemAddedTag.fadeOut(800)
+    }.bind(this), 1000);
   },
 
   clearSearch: function(e) {
@@ -122,10 +124,9 @@ app.AppView = Backbone.View.extend({
   doSearch: function() {
     app.SearchResults.foodName = this.$searchInput.val().trim();
     app.SearchResults.fetch({
-      success: function(response, xhr) {}.bind(this),
       error: function(errorResponse) {
-        console.log("Unable to fetch data");
-      }
+        this.$searchResults.html("Sorry, something went wrong. Unable to retrieve results");
+      }.bind(this)
     });
   },
 
