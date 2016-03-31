@@ -17,7 +17,7 @@ app.AddedView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html( this.template( { name: this.model.attributes.name, calories: this.model.attributes.calories, brand: this.model.attributes.brand }  ) );
+    this.$el.html( this.template( { name: this.model.attributes.name, calories: this.model.attributes.calories, brand: this.model.attributes.brand, grams: this.model.attributes.grams }  ) );
     return this;
   },
 

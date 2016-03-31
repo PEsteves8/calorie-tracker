@@ -144,19 +144,17 @@ app.AppView = Backbone.View.extend({
 
     var searchView;
     this.$searchResults.html('');
-
     if (app.SearchResults.length < 1) {
-
       this.$searchResults.append("No results found");
       return;
     }
-
-
     app.SearchResults.each(function(model) {
+      console.log(model);
       searchView = new app.SearchView({
         model: model
       });
       this.$searchResults.append(searchView.render().el);
+
     }.bind(this));
 
   },

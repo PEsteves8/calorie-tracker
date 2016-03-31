@@ -11,43 +11,13 @@ body, html {
 .hidden {
   display: none;
 }
-.li-left p {
-  padding: 0;
-  margin: 0;
-  margin-bottom: 5px;
-}
-.li-left {
-  position: absolute;
-  left: 10px;
-  padding-right: 50px;
-}
-.li-right {
-  position: absolute;
-  right: 10px;
-}
-.cal-number {
-  margin-right: 50px;
-  margin-top: 25px;
-}
+
 .datepicker {
   margin: 0 auto;
-  margin-top: 20px;
   font-size: 0.85em;
   display: inline-block;
 }
-@media screen and (max-width: 550px) {
-  .datepicker {
-    font-size: 0.77em;
-    display: inline-block;
-    margin: 0 auto;
-  }
-  .added-items-list li {
-    height: 5.2em;
-  }
-  .cal-number {
-    margin-top: 60px;
-  }
-}
+
 .main-box {
   width: 100%;
   -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
@@ -174,6 +144,7 @@ form {
   position: relative;
 }
 .added-items-list li {
+  position: relative;
   color: #000000;
   font-size: 0.9em;
   border-radius: 3px;
@@ -181,11 +152,21 @@ form {
   -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
-  padding: 10px;
-  padding-top: 7px;
   margin-bottom: 2px;
   text-indent: 20px;
-  min-height: 3.3em;
+  padding: 7px 50px 5px 0;
+  /*min-height: 3.3em;*/
+}
+
+.item-description {
+  padding: 0;
+  margin: 0 0 7px;
+  text-align: left;
+}
+
+.cal-number {
+  padding: 0;
+  margin: 0;
 }
 .day-section {
   margin-top: 10px;
@@ -199,9 +180,6 @@ form {
   appearance: none;
   background: none;
   border: 0;
-  top: 0px;
-  right: 10px;
-  bottom: 0px;
   width: 40px;
   height: 35px;
   margin: auto 0;
@@ -209,9 +187,14 @@ form {
   color: #a88a8a;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
-  margin-left: 0px;
-  margin-bottom: 10px;
+  display: inline;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
+
+
+
 .remove-button:after {
   content: '✖';
 }
@@ -227,7 +210,7 @@ form {
 .item-added-tag {
   color: white;
   position: fixed;
-  bottom: 50px;
+  bottom: 30px;
   left: 0;
   right: 0;
   line-height: 2em;
@@ -237,4 +220,40 @@ form {
   background-color: #222222;
   opacity: 0.95;
   font-size: 0.8em;
+}
+
+.total-cal-section {
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  background: linear-gradient(to bottom, #f1efef 5%, #ffffff 100%);
+  border-radius: 5px;
+  color: black;
+  margin: 20px auto 20px;
+  padding: 10px 0;
+}
+
+.total-calories, .total-cal-title {
+color: #316f34;    
+}
+
+.total-calories {
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.total-cal-title {
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .datepicker {
+    font-size: 0.77em;
+    display: inline-block;
+    margin: 0 auto;
+  }
+  .added-items-list li {
+
+  }
 }

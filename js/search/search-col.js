@@ -8,7 +8,7 @@ var SearchResultsList = Backbone.Collection.extend({
   foodName: "cookies",
 
   url: function() {
-    return "https://api.nutritionix.com/v1_1/search/" + this.foodName + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=2d9c91e7&appKey=4e8a963034f86954a7c5cf54a7c5c89a";
+    return "https://api.nutritionix.com/v1_1/search/" + this.foodName + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2cnf_serving_weight_grams&appId=2d9c91e7&appKey=4e8a963034f86954a7c5cf54a7c5c89a";
   },
 
   parse: function(response) {

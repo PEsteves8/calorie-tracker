@@ -12,7 +12,7 @@ app.SearchView = Backbone.View.extend({
 
 
   render: function() {
-     this.$el.html( this.template( { name: this.model.attributes.fields.item_name, calories: this.model.attributes.fields.nf_calories, brand: this.model.attributes.fields.brand_name }  ) );
+     this.$el.html( this.template( { name: this.model.attributes.fields.item_name, calories: this.model.attributes.fields.nf_calories, brand: this.model.attributes.fields.brand_name, grams: this.model.attributes.fields.nf_serving_weight_grams }  ) );
      return this;
    },
 
@@ -22,6 +22,7 @@ app.SearchView = Backbone.View.extend({
        name: this.model.attributes.fields.item_name,
        brand: this.model.attributes.fields.brand_name,
        calories: this.model.attributes.fields.nf_calories,
+       grams: this.model.attributes.fields.nf_serving_weight_grams,
        date: $.datepicker.formatDate("yy-mm-dd", $( ".datepicker" ).datepicker( "getDate" ) )
      });
    }

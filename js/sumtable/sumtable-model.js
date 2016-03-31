@@ -6,6 +6,7 @@ app.AddedItem = Backbone.Model.extend({
     brand: "",
     calories: 0,
     date: "",
+    grams: ""
 
   }
 });
